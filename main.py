@@ -1,18 +1,21 @@
 import requests
 
-url = 'https://wttr.in/Череповец?MnqT&lang=ru'
-response = requests.get(url)
-response.raise_for_status()
-print(response.text)
 
+def func_url(url): 
+	response = requests.get(url, params={
+        "MnqT": "",
+        "lang": "ru",
+    })
+	response.raise_for_status()
+	print(url)
+	print(response.text)
 
-url = 'https://wttr.in/Лондон?MnqT&lang=ru'
-response = requests.get(url)
-response.raise_for_status()
-print(response.text)
+urls = [
+	"https://wttr.in/Череповец",
+	"https://wttr.in/Лондон",
+	"https://wttr.in/Нерюнгри"
+]
 
-
-url = 'https://wttr.in/Шереметьево?MnqT&lang=ru'
-response = requests.get(url)
-response.raise_for_status()
-print(response.text)
+if __name__ == '__main__':
+	for url in urls:
+		func_url(url)
